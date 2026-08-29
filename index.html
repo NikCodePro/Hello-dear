@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Sunshine ☀️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #333;
+        }
+
+        /* Container Styling */
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        h1 {
+            font-family: 'Fredoka One', cursive;
+            color: #ff4757;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        button {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        #yesBtn {
+            background: #ff4757;
+            color: white;
+            box-shadow: 0 8px 15px rgba(255, 71, 87, 0.3);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
+        }
+
+        #noBtn {
+            background: #f1f2f6;
+            color: #2f3542;
+            position: relative; /* For the jump effect */
+        }
+
+        /* Options Questionnaire */
+        .hidden {
+            display: none !important;
+        }
+
+        .question-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .question-group h3 {
+            margin: 10px 0;
+            color: #ff4757;
+            font-size: 1.1rem;
+        }
+
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #fff0f5;
+            border: 2px solid #ffb8b8;
+            color: #ff4757;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option-btn.selected {
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
+        }
+
+        #submitDate {
+            background: #ff4757;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .heart {
+            font-size: 4rem;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: -10px;
+        }
+
+        .celebration {
+            font-size: 4rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="proposalCard">
+        <div class="heart">💖</div>
+        <h1>Will you go on a date with me, my sunshine? ☀️</h1>
+        <div class="btn-group">
+            <button id="yesBtn">Yes! 🥰</button>
+            <button id="noBtn">No 😒</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="questionCard">
+        <h1>Yay! Let's plan it 💌</h1>
+        
+        <div class="question-group">
+            <h3>When should we go? 🕰️</h3>
+            <div class="options" id="timeOptions">
+                <div class="option-btn" onclick="selectOption('time', 'Morning 🌅', this)">Morning</div>
+                <div class="option-btn" onclick="selectOption('time', 'Afternoon ☀️', this)">Afternoon</div>
+                <div class="option-btn" onclick="selectOption('time', 'Evening 🌇', this)">Evening</div>
+                <div class="option-btn" onclick="selectOption('time', 'Late Night 🌙', this)">Late Night</div>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <h3>What's the vibe? ✨</h3>
+            <div class="options" id="themeOptions">
+                <div class="option-btn" onclick="selectOption('theme', 'Romantic 🌹', this)">Romantic</div>
+                <div class="option-btn" onclick="selectOption('theme', 'Devout 🙏', this)">Devout</div>
+                <div class="option-btn" onclick="selectOption('theme', 'Party 🪩', this)">Party</div>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <h3>Which day? 📅</h3>
+            <div class="options" id="dayOptions">
+                <div class="option-btn" onclick="selectOption('day', 'Saturday 🎈', this)">Saturday</div>
+                <div class="option-btn" onclick="selectOption('day', 'Sunday 🎉', this)">Sunday</div>
+                <div class="option-btn" onclick="selectOption('day', 'The Weekend ✨', this)">Weekend</div>
+            </div>
+        </div>
+
+        <button id="submitDate">Confirm Our Date! ❤️</button>
+    </div>
+
+    <div class="card hidden" id="successCard">
+        <div class="celebration">🎉🥂🎊</div>
+        <h1>HURRAY! It's a Date! ❤️</h1>
+        <p>I am so excited! Redirecting you to WhatsApp so you can send me your choices...</p>
+    </div>
+
+    <script>
+        // State variables to store the answers
+        let selectedTime = "";
+        let selectedTheme = "";
+        let selectedDay = "";
+
+        // Elements
+        const proposalCard = document.getElementById('proposalCard');
+        const questionCard = document.getElementById('questionCard');
+        const successCard = document.getElementById('successCard');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const submitDate = document.getElementById('submitDate');
+
+        // Jumping "No" Button Logic
+        const moveNoButton = () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.abs(x)}px`;
+            noBtn.style.top = `${Math.abs(y)}px`;
+        };
+
+        // Mobile touch and PC hover for the 'No' button chase
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // prevents clicking on mobile
+            moveNoButton();
+        });
+
+        // "Yes" Button Logic
+        yesBtn.addEventListener('click', () => {
+            proposalCard.classList.add('hidden');
+            questionCard.classList.remove('hidden');
+        });
+
+        // Selection Logic for Options
+        function selectOption(category, value, element) {
+            // Update state
+            if (category === 'time') selectedTime = value;
+            if (category === 'theme') selectedTheme = value;
+            if (category === 'day') selectedDay = value;
+
+            // Update UI
+            const siblings = element.parentElement.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('selected');
+            }
+            element.classList.add('selected');
+        }
+
+        // Final Submit & WhatsApp Redirect
+        submitDate.addEventListener('click', () => {
+            // Basic validation
+            if (!selectedTime || !selectedTheme || !selectedDay) {
+                alert("Please pick an option for all three questions, my sunshine! ☀️");
+                return;
+            }
+
+            // Show Success Card
+            questionCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+
+            // Format WhatsApp Message
+            const phoneNumber = "9193257838"; 
+            const message = `Hey there! 🥰 I said YES to our date, my sunshine! ☀️💛\n\nHere are my perfect date preferences:\n🕰️ Time: ${selectedTime}\n✨ Theme: ${selectedTheme}\n📅 Day: ${selectedDay}\n\nI absolutely can't wait! ❤️`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Redirect after 3 seconds of celebration
+            setTimeout(() => {
+                window.location.href = whatsappURL;
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
