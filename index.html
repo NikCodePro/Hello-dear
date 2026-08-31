@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Little Surprise For You ✨</title>
+    <title>For My Sunshine ☀️</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Poppins:wght@400;600&display=swap');
 
@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -20,264 +20,258 @@
             color: #333;
         }
 
+        /* Container Styling */
         .card {
             background: rgba(255, 255, 255, 0.95);
             padding: 40px;
             border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             text-align: center;
-            max-width: 450px;
+            max-width: 500px;
             width: 90%;
             z-index: 10;
-            position: relative;
-            animation: fadeIn 0.8s ease-out;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         h1 {
             font-family: 'Fredoka One', cursive;
             color: #ff4757;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        /* Hidden Class for transitions */
-        .hidden {
-            display: none !important;
+            margin-bottom: 20px;
+            font-size: 2rem;
         }
 
         /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
         button {
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
-            padding: 15px 30px;
+            font-size: 1.2rem;
+            padding: 12px 30px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
-            outline: none;
-            user-select: none;
-            -webkit-user-select: none;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .btn-primary {
+        #yesBtn {
             background: #ff4757;
             color: white;
             box-shadow: 0 8px 15px rgba(255, 71, 87, 0.3);
         }
 
-        .btn-primary:hover {
-            transform: scale(1.05);
+        #yesBtn:hover {
+            transform: scale(1.1);
             box-shadow: 0 10px 20px rgba(255, 71, 87, 0.4);
         }
 
-        .btn-primary:active {
-            transform: scale(0.95);
-        }
-
-        /* Charging Bar */
-        .charge-container {
-            width: 100%;
-            height: 30px;
-            background: #ffeaa7;
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 20px 0;
-            box-shadow: inset 0 3px 6px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .charge-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            transition: width 0.1s;
-        }
-
-        #chargeText {
-            font-weight: 600;
-            color: #ff4757;
-            margin-bottom: 10px;
-        }
-
-        /* Final Romantic Message styling */
-        .romantic-text {
-            font-size: 1.1rem;
+        #noBtn {
+            background: #f1f2f6;
             color: #2f3542;
-            font-style: italic;
-            border-left: 4px solid #ff4757;
-            padding-left: 15px;
+            position: relative; /* For the jump effect */
+        }
+
+        /* Options Questionnaire */
+        .hidden {
+            display: none !important;
+        }
+
+        .question-group {
+            margin-bottom: 20px;
             text-align: left;
-            margin-bottom: 30px;
         }
 
-        /* Floating Hearts Background */
-        .floating-heart {
-            position: absolute;
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.7);
-            animation: floatUp 4s linear infinite;
-            z-index: 1;
+        .question-group h3 {
+            margin: 10px 0;
+            color: #ff4757;
+            font-size: 1.1rem;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; transform: translateY(20px); }
-            100% { opacity: 1; transform: translateY(0); }
+        .options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        .option-btn {
+            background: #fff0f5;
+            border: 2px solid #ffb8b8;
+            color: #ff4757;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        @keyframes shake {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            50% { transform: translateX(5px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
+        .option-btn.selected {
+            background: #ff4757;
+            color: white;
+            border-color: #ff4757;
         }
-        
-        .shake-animation {
-            animation: shake 0.3s infinite;
+
+        #submitDate {
+            background: #ff4757;
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        /* Animations */
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .heart {
+            font-size: 4rem;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: -10px;
+        }
+
+        .celebration {
+            font-size: 4rem;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div id="heartsContainer"></div>
-
-    <div class="card" id="introCard">
-        <h1>Hey there, gorgeous ✨</h1>
-        <p>I made a little something for you. Just a quick check to measure exactly how much you mean to me.</p>
-        <button class="btn-primary" id="startBtn">Let's see! 💕</button>
+    <div class="card" id="proposalCard">
+        <div class="heart">💖</div>
+        <h1>Will you go on a date with me, my sunshine? ☀️</h1>
+        <div class="btn-group">
+            <button id="yesBtn">Yes! 🥰</button>
+            <button id="noBtn">No 😒</button>
+        </div>
     </div>
 
-    <div class="card hidden" id="chargeCard">
-        <h1>The Love Meter 💖</h1>
-        <p>Press and hold the button below to scan and measure my affection for you!</p>
+    <div class="card hidden" id="questionCard">
+        <h1>Yay! Let's plan it 💌</h1>
         
-        <p id="chargeText">0%</p>
-        <div class="charge-container">
-            <div class="charge-bar" id="chargeBar"></div>
+        <div class="question-group">
+            <h3>When should we go? 🕰️</h3>
+            <div class="options" id="timeOptions">
+                <div class="option-btn" onclick="selectOption('time', 'Morning 🌅', this)">Morning</div>
+                <div class="option-btn" onclick="selectOption('time', 'Afternoon ☀️', this)">Afternoon</div>
+                <div class="option-btn" onclick="selectOption('time', 'Evening 🌇', this)">Evening</div>
+                <div class="option-btn" onclick="selectOption('time', 'Late Night 🌙', this)">Late Night</div>
+            </div>
         </div>
 
-        <button class="btn-primary" id="chargeBtn">Press & Hold Me 🥺</button>
+        <div class="question-group">
+            <h3>What's the vibe? ✨</h3>
+            <div class="options" id="themeOptions">
+                <div class="option-btn" onclick="selectOption('theme', 'Romantic 🌹', this)">Romantic</div>
+                <div class="option-btn" onclick="selectOption('theme', 'Devout 🙏', this)">Devout</div>
+                <div class="option-btn" onclick="selectOption('theme', 'Party 🪩', this)">Party</div>
+            </div>
+        </div>
+
+        <div class="question-group">
+            <h3>Which day? 📅</h3>
+            <div class="options" id="dayOptions">
+                <div class="option-btn" onclick="selectOption('day', 'Saturday 🎈', this)">Saturday</div>
+                <div class="option-btn" onclick="selectOption('day', 'Sunday 🎉', this)">Sunday</div>
+                <div class="option-btn" onclick="selectOption('day', 'The Weekend ✨', this)">Weekend</div>
+            </div>
+        </div>
+
+        <button id="submitDate">Confirm Our Date! ❤️</button>
     </div>
 
-    <div class="card hidden" id="messageCard">
-        <h1>ERROR: CAPACITY EXCEEDED! 🚨</h1>
-        <p>Oops! The meter broke because my feelings for you simply can't be measured. ♾️</p>
-        
-        <div class="romantic-text">
-            "You are my favorite notification, my biggest comfort, and the absolute best thing that has happened to me. Your smile lights up my entire world. I just wanted to take a moment to remind you how incredibly special, beautiful, and loved you are today."
-        </div>
-
-        <button class="btn-primary" id="whatsappBtn">Send me a virtual kiss back 💋</button>
+    <div class="card hidden" id="successCard">
+        <div class="celebration">🎉🥂🎊</div>
+        <h1>HURRAY! It's a Date! ❤️</h1>
+        <p>I am so excited! Redirecting you to WhatsApp so you can send me your choices...</p>
     </div>
 
     <script>
-        // DOM Elements
-        const introCard = document.getElementById('introCard');
-        const chargeCard = document.getElementById('chargeCard');
-        const messageCard = document.getElementById('messageCard');
-        
-        const startBtn = document.getElementById('startBtn');
-        const chargeBtn = document.getElementById('chargeBtn');
-        const chargeBar = document.getElementById('chargeBar');
-        const chargeText = document.getElementById('chargeText');
-        const whatsappBtn = document.getElementById('whatsappBtn');
+        // State variables to store the answers
+        let selectedTime = "";
+        let selectedTheme = "";
+        let selectedDay = "";
 
-        let chargeInterval;
-        let chargeLevel = 0;
+        // Elements
+        const proposalCard = document.getElementById('proposalCard');
+        const questionCard = document.getElementById('questionCard');
+        const successCard = document.getElementById('successCard');
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const submitDate = document.getElementById('submitDate');
 
-        // Transition from Intro to Charge Screen
-        startBtn.addEventListener('click', () => {
-            introCard.classList.add('hidden');
-            chargeCard.classList.remove('hidden');
-        });
-
-        // Charging Logic
-        const startCharging = (e) => {
-            e.preventDefault(); // Prevents text selection on mobile
-            chargeBtn.classList.add('shake-animation');
-            chargeBtn.innerText = "Charging... ⚡";
+        // Jumping "No" Button Logic
+        const moveNoButton = () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
             
-            chargeInterval = setInterval(() => {
-                chargeLevel += 2; // Speed of charging
-                if (chargeLevel >= 100) {
-                    clearInterval(chargeInterval);
-                    chargeLevel = 100;
-                    triggerOverload();
-                }
-                chargeBar.style.width = chargeLevel + '%';
-                chargeText.innerText = chargeLevel + '%';
-            }, 50);
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${Math.abs(x)}px`;
+            noBtn.style.top = `${Math.abs(y)}px`;
         };
 
-        const stopCharging = (e) => {
-            e.preventDefault();
-            clearInterval(chargeInterval);
-            chargeBtn.classList.remove('shake-animation');
-            chargeBtn.innerText = "Press & Hold Me 🥺";
-            
-            // If they let go before 100%
-            if (chargeLevel > 0 && chargeLevel < 100) {
-                chargeLevel = 0;
-                chargeBar.style.width = '0%';
-                chargeText.innerText = "You have to hold it down! 0%";
+        // Mobile touch and PC hover for the 'No' button chase
+        noBtn.addEventListener('mouseover', moveNoButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault(); // prevents clicking on mobile
+            moveNoButton();
+        });
+
+        // "Yes" Button Logic
+        yesBtn.addEventListener('click', () => {
+            proposalCard.classList.add('hidden');
+            questionCard.classList.remove('hidden');
+        });
+
+        // Selection Logic for Options
+        function selectOption(category, value, element) {
+            // Update state
+            if (category === 'time') selectedTime = value;
+            if (category === 'theme') selectedTheme = value;
+            if (category === 'day') selectedDay = value;
+
+            // Update UI
+            const siblings = element.parentElement.children;
+            for (let i = 0; i < siblings.length; i++) {
+                siblings[i].classList.remove('selected');
             }
-        };
-
-        // Support both mouse and touch screens
-        chargeBtn.addEventListener('mousedown', startCharging);
-        chargeBtn.addEventListener('mouseup', stopCharging);
-        chargeBtn.addEventListener('mouseleave', stopCharging);
-        
-        chargeBtn.addEventListener('touchstart', startCharging);
-        chargeBtn.addEventListener('touchend', stopCharging);
-
-        // When the meter breaks (hits 100%)
-        function triggerOverload() {
-            chargeCard.classList.add('hidden');
-            messageCard.classList.remove('hidden');
-            createFloatingHearts();
+            element.classList.add('selected');
         }
 
-        // WhatsApp Redirect
-        whatsappBtn.addEventListener('click', () => {
-            const phoneNumber = "9193257838"; 
-            const message = "Hey! 🥰 I just played your cute game and it completely melted my heart. Sending you a million virtual kisses back! 💋✨";
-            const encodedMessage = encodeURIComponent(message);
-            window.location.href = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        });
+        // Final Submit & WhatsApp Redirect
+        submitDate.addEventListener('click', () => {
+            // Basic validation
+            if (!selectedTime || !selectedTheme || !selectedDay) {
+                alert("Please pick an option for all three questions, my sunshine! ☀️");
+                return;
+            }
 
-        // Background Hearts Animation for Final Screen
-        function createFloatingHearts() {
-            const container = document.getElementById('heartsContainer');
-            const symbols = ['💖', '✨', '🌸', '🥺', '💕'];
+            // Show Success Card
+            questionCard.classList.add('hidden');
+            successCard.classList.remove('hidden');
+
+            // Format WhatsApp Message with NEW NUMBER
+            const phoneNumber = "918077967264"; 
+            const message = `Hey there! 🥰 I said YES to our date, my sunshine! ☀️💛\n\nHere are my perfect date preferences:\n🕰️ Time: ${selectedTime}\n✨ Theme: ${selectedTheme}\n📅 Day: ${selectedDay}\n\nI absolutely can't wait! ❤️`;
             
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('floating-heart');
-                heart.innerText = symbols[Math.floor(Math.random() * symbols.length)];
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 2 + 3) + 's'; // 3s to 5s
-                container.appendChild(heart);
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-                // Remove heart after animation to keep DOM clean
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
-            }, 300);
-        }
+            // Redirect after 3 seconds of celebration
+            setTimeout(() => {
+                window.location.href = whatsappURL;
+            }, 3000);
+        });
     </script>
 </body>
 </html>
